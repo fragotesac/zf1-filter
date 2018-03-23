@@ -122,7 +122,6 @@ class Zend_Filter_StringTrimTest extends PHPUnit\Framework\TestCase
      */
     public function testSetParamCharListToConstructor()
     {
-        require_once 'Zend/Config.php';
         $config = new Zend_Config(array('charlist' => '&'));
         $filter = new Zend_Filter_StringTrim($config);
         $this->assertEquals('&', $filter->getCharList());

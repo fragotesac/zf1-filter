@@ -152,7 +152,6 @@ class Zend_Filter_HtmlEntitiesTest extends PHPUnit\Framework\TestCase
      */
     public function testConfigObject()
     {
-        require_once 'Zend/Config.php';
         $options = array('quotestyle' => 5, 'encoding' => 'ISO-8859-1');
         $config  = new Zend_Config($options);
 

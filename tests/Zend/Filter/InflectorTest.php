@@ -26,12 +26,6 @@
 require_once 'Zend/Filter/Inflector.php';
 
 /**
- * @see Zend_Config
- */
-require_once 'Zend/Config.php';
-
-
-/**
  * Test class for Zend_Filter_Inflector.
  *
  * @category   Zend
