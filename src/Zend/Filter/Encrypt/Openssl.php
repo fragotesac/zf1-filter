@@ -137,7 +137,9 @@ class Zend_Filter_Encrypt_Openssl implements Zend_Filter_Encrypt_Interface
                         throw new Zend_Filter_Exception("Public key '{$cert}' not valid");
                     }
 
-                    openssl_free_key($test);
+                    if (version_compare(PHP_VERSION, '8.0', '<')) {
+                        openssl_free_key($test);
+                    }
                     $this->_keys['public'][$key] = $cert;
                     break;
                 case 'private':
@@ -146,7 +148,9 @@ class Zend_Filter_Encrypt_Openssl implements Zend_Filter_Encrypt_Interface
                         throw new Zend_Filter_Exception("Private key '{$cert}' not valid");
                     }
 
-                    openssl_free_key($test);
+                    if (version_compare(PHP_VERSION, '8.0', '<')) {
+                        openssl_free_key($test);
+                    }
                     $this->_keys['private'][$key] = $cert;
                     break;
                 case 'envelope':
@@ -373,9 +377,11 @@ class Zend_Filter_Encrypt_Openssl implements Zend_Filter_Encrypt_Interface
             $value    = $compress->filter($value);
         }
 
-        $crypt = openssl_seal($value, $encrypted, $encryptedkeys, $keys);
-        foreach ($keys as $key) {
-            openssl_free_key($key);
+        $crypt = openssl_seal($value, $encrypted, $encryptedkeys, $keys, 'RC4');
+        if (version_compare(PHP_VERSION, '8.0', '<')) {
+            foreach ($keys as $key) {
+                openssl_free_key($key);
+            }
         }
 
         if ($crypt === false) {
@@ -450,8 +456,10 @@ class Zend_Filter_Encrypt_Openssl implements Zend_Filter_Encrypt_Interface
             $value = substr($value, $length);
         }
 
-        $crypt = openssl_open($value, $decrypted, $envelope, $keys);
-        openssl_free_key($keys);
+        $crypt = openssl_open($value, $decrypted, $envelope, $keys, 'RC4');
+        if (version_compare(PHP_VERSION, '8.0', '<')) {
+            openssl_free_key($keys);
+        }
 
         if ($crypt === false) {
             throw new Zend_Filter_Exception('Openssl was not able to decrypt you content with the given options');
