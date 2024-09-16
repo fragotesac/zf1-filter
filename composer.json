@@ -11,12 +11,12 @@
     "prefer-stable": true,
     "require": {
         "php": "~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0",
-        "diablomedia/zendframework1-exception": "^1.1.1",
-        "diablomedia/zendframework1-config": "^2.0.5",
-        "diablomedia/zendframework1-loader": "^1.0.5",
-        "diablomedia/zendframework1-crypt": "^1.0.5",
-        "diablomedia/zendframework1-date": "^1.0.5",
-        "diablomedia/zendframework1-locale": "^1.0.6"
+        "fragotesac/zf1-exception": "^1.1.1",
+        "fragotesac/zf1-config": "^2.0.5",
+        "fragotesac/zf1-loader": "^1.0.5",
+        "fragotesac/zf1-crypt": "^1.0.5",
+        "fragotesac/zf1-date": "^1.0.5",
+        "fragotesac/zf1-locale": "^1.0.6"
     },
     "autoload": {
         "psr-0": {
@@ -72,7 +72,7 @@
         "ext-rar": "Used in the Zend_Filter_Compress_Rar filter",
         "ext-lzf": "Used in the Zend_Filter_Compress_Lzf filter",
         "pear/archive_tar": "For the Zend_Filter_Compress_Tar filter",
-        "diablomedia/zendframework1-filter-input": "Provides the separate Zend_Filter_Input component"
+        "fragotesac/zf1-filter-input": "Provides the separate Zend_Filter_Input component"
     },
     "config": {
         "allow-plugins": {
